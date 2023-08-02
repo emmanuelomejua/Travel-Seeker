@@ -20,6 +20,8 @@ const Header = () => {
         </Typography>
 
         <Box>
+          {/* <Autocomplete> */}
+
           <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <Search/>
@@ -28,6 +30,7 @@ const Header = () => {
                 root: classes.inputRoot, input: classes.inputInput
               }}/>
           </div>
+              {/* </Autocomplete> */}
          </Box> 
       </Box>
       </Toolbar>
