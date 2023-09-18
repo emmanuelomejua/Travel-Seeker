@@ -15,21 +15,24 @@ const Map = () => {
   }
 
   return (
+
     <div className={classes.mapContainer}>
-      {/* <GoogleMapReact
-        bootstrapURLKeys={{key: ''}}
+      <GoogleMapReact
+        bootstrapURLKeys={{key: 'AIzaSyCPZc0VaRQ53fMO81_Cg1pqtLj5ogtF_I0'}}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
-        options={''}
+        options={{ disableDefaultUI: true, zoomControl: true,  }}
         onChange={() => {}}
         onChildClick={() => {}}
       >
       Map
-      </GoogleMapReact> */}
+      </GoogleMapReact> 
+
     </div>
   )
+
 }
 
 export default Map

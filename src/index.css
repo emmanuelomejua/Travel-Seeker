@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Vithkuqi:wght@400;500;600&display=swap');
+
+*{
+  font-family: Noto+Serif+Vithkuqi;
+}
+
+
 /* export default [
   {
     featureType: 'all',
