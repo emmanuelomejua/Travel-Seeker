@@ -1,18 +1,18 @@
 import React from 'react';
 import { Box, Typography, Card, CardActions, CardMedia, CardContent, Button } from '@mui/material';
 import { LocationOn, Phone } from '@mui/icons-material';
-import Rating from '@mui/material';
+import { Rating } from '@mui/lab'
 
 import useStyles from './styles';
 import { Chip } from '@material-ui/core';
 
 
 
-const url = 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'
+const url = 'https://media.istockphoto.com/id/1700592253/photo/crispy-soft-shell-crab-with-garlic-aioli.webp?b=1&s=612x612&w=0&k=20&c=-bPU1aod_6JTARJ-SaNyuec4Dm0JE0DaEzKeN_7P-zg='
 
 const PlaceDetails = ({ place }) => {
 
-  console.log(place);
+
   const classes = useStyles();
 
   return (
@@ -28,8 +28,8 @@ const PlaceDetails = ({ place }) => {
         </Typography>
 
         <Box display='flex' justifyContent='space-between'>
-          <Typography variant='subtitle1'>Price</Typography>
-          <Typography gutterBottom variant='subtitle1'>{place.price_level}</Typography>
+          <Rating size='small' value={Number(place.rating)} readOnly/>
+          <Typography gutterBottom variant='subtitle1'>Out of {place.num_reviews} reviews</Typography>
         </Box>
 
         <Box display='flex' justifyContent='space-between'>
@@ -67,7 +67,7 @@ const PlaceDetails = ({ place }) => {
 
         <CardActions>
           <Button size='small' color='primary' onClick={() => window.open(place.web_url, '_blanc')}>
-            Travel Seeker
+            Trip Advisor
           </Button>
 
           <Button size='small' color='primary' onClick={() => window.open(place.website, '_blanc')}>

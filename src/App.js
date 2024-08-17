@@ -1,6 +1,6 @@
 import { CssBaseline, Grid } from '@mui/material'
 
-import { List, Header, Map, PlaceDetails } from './components';
+import { List, Header, Map } from './components';
 import { getPlaces } from './api';
 import { useEffect ,useState } from 'react';
 
@@ -8,6 +8,7 @@ import { useEffect ,useState } from 'react';
 function App() {
 
   const [places, setPlaces] = useState([]);
+  const [childClick, setChildClick] = useState(null);
 
   const [cordinates, setCordinates] = useState({});
   const [bounds, setBounds] = useState({});
@@ -43,6 +44,8 @@ function App() {
             setCordinates={setCordinates}
             setBounds={setBounds}
             cordinates={cordinates}
+            places={places}
+            setChildClick={setChildClick}
           />
         </Grid>
       </Grid>
