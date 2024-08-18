@@ -2,14 +2,13 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import { Paper, Typography, useMediaQuery } from '@material-ui/core'
 import { Rating } from '@mui/lab'
-
+import { url } from '../../util/ImgUrl';
 import useStyles from './styles'
 import { LocationOnOutlined } from '@mui/icons-material';
 
 
-const url = 'https://media.istockphoto.com/id/1700592253/photo/crispy-soft-shell-crab-with-garlic-aioli.webp?b=1&s=612x612&w=0&k=20&c=-bPU1aod_6JTARJ-SaNyuec4Dm0JE0DaEzKeN_7P-zg='
 
-const Map = ({setCordinates, setBounds, cordinates, places }) => {
+const Map = ({setCordinates, setBounds, cordinates, places, setChildClick }) => {
 
   const classes = useStyles()
   const isDesktop = useMediaQuery('(min-width: 600px)')
@@ -29,7 +28,7 @@ const Map = ({setCordinates, setBounds, cordinates, places }) => {
           setCordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw })
         }}
-        onChildClick={() => {}}
+        onChildClick={(child) => setChildClick(child)}
       >
         {places?.map((place, i) => (
           <div 

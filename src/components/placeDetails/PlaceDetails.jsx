@@ -1,19 +1,22 @@
-import React from 'react';
 import { Box, Typography, Card, CardActions, CardMedia, CardContent, Button } from '@mui/material';
 import { LocationOn, Phone } from '@mui/icons-material';
 import { Rating } from '@mui/lab'
-
+import { url } from '../../util/ImgUrl';
 import useStyles from './styles';
 import { Chip } from '@material-ui/core';
 
 
 
-const url = 'https://media.istockphoto.com/id/1700592253/photo/crispy-soft-shell-crab-with-garlic-aioli.webp?b=1&s=612x612&w=0&k=20&c=-bPU1aod_6JTARJ-SaNyuec4Dm0JE0DaEzKeN_7P-zg='
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, selected, refProp }) => {
 
 
   const classes = useStyles();
+
+  if(selected){
+    refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
 
   return (
     <Card elevation={6}>
@@ -67,7 +70,7 @@ const PlaceDetails = ({ place }) => {
 
         <CardActions>
           <Button size='small' color='primary' onClick={() => window.open(place.web_url, '_blanc')}>
-            Trip Advisor
+           Ask Trip Advisor
           </Button>
 
           <Button size='small' color='primary' onClick={() => window.open(place.website, '_blanc')}>
