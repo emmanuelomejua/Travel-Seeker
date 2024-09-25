@@ -37,13 +37,16 @@ function App() {
 
 
   useEffect(() => {
-    setLoading(false);
-
-    getPlaces(type, bounds?.sw, bounds?.ne)
-      .then((data) => {
-        setPlaces(data);
-        setLoading(false);
-      })
+    if(bounds) {
+      setLoading(true);
+  
+      getPlaces(type, bounds?.sw, bounds?.ne)
+        .then((data) => {
+          setPlaces(data?.filter((place) => place?.name && place?.num_reviews > 0));
+          setFilteredPlace([]);
+          setLoading(false);
+        })
+    }
   }, [bounds, cordinates, type])
 
 
@@ -51,7 +54,7 @@ function App() {
   return (
     <>
       <CssBaseline/>
-      <Header/>
+      <Header setCordinates={setCordinates}/>
 
       <Grid container spacing={3} style={{width: '100%'}}>
         <Grid item xs={12} md={4}>

@@ -2,11 +2,26 @@ import { Autocomplete } from "@react-google-maps/api"
 import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core"
 import { Search } from '@mui/icons-material'
 import useStyles  from './styles'
+import { useState } from "react"
 
 
-const Header = () => {
+const Header = ({ setCordinates }) => {
 
-  const classes = useStyles()
+  const classes = useStyles();
+
+  const [autocomplete, setAutocomplete] = useState(null);
+
+  const onLoad = (autoC) => {
+    setAutocomplete(autoC);
+  }
+
+  const onPlaceChanged = () => {
+    const lat = autocomplete.getPlace().geometry.location.lat();
+    const lng = autocomplete.getPlace().geometry.location.lng();
+
+    setCordinates({ lat, lng })
+  }
+
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
@@ -20,17 +35,16 @@ const Header = () => {
         </Typography>
 
         <Box>
-          <Autocomplete>
-
-          <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <Search/>
-              </div>
-              <InputBase placeholder="Search..." classes={{
-                root: classes.inputRoot, input: classes.inputInput
-              }}/>
-          </div>
-              </Autocomplete>
+          <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+            <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <Search/>
+                </div>
+                <InputBase placeholder="Search..." classes={{
+                  root: classes.inputRoot, input: classes.inputInput
+                }}/>
+            </div>
+          </Autocomplete>
          </Box> 
       </Box>
       </Toolbar>
