@@ -26,3 +26,13 @@ export const getPlaces = async (type, sw, ne) => {
 
 // 8acbbaa79emshde5c3ce29d136c1p180bccjsnd83a1b6a11cb
 // 4813c0479cmsh4d795371ec5f1e0p19dc5cjsn8bee7511540d
+
+export const getWeatherData = async () => {
+  try {
+    const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/find', {
+
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}

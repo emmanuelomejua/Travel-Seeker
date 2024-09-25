@@ -37,7 +37,7 @@ function App() {
 
 
   useEffect(() => {
-    if(bounds) {
+    if(bounds.sw && bounds.ne) {
       setLoading(true);
   
       getPlaces(type, bounds?.sw, bounds?.ne)
@@ -47,7 +47,8 @@ function App() {
           setLoading(false);
         })
     }
-  }, [bounds, cordinates, type])
+  }, [bounds, type])
+
 
 
 
